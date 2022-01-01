@@ -1,5 +1,5 @@
-// import Logo from './logo.png'
+import FotoProfile from './profile.jpeg'
 import Msal from './msal.svg'
 import Work from './work.svg'
 
-export { Msal, Work }
+export { FotoProfile, Msal, Work }

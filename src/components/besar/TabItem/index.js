@@ -1,14 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 import { fonts } from '../../../utils'
 
-const TabItem = ({ isFocused, onPress, onLongPress, label }) => {
+const TabItem = ({ index, isFocused, onPress, onLongPress, label }) => {
     const Icons = () => {
         if (label === 'Home') {
             return isFocused ? <Icon name="home" size={22} color="#e0e0e0" /> : <Icon name="home" size={22} color="#6AB1D7" />;
         }
-
 
         if (label === 'Profile') {
             return isFocused ? <Icon name="user" size={22} color="#e0e0e0" /> : <Icon name="user" size={22} color="#6AB1D7" />;
@@ -18,15 +17,10 @@ const TabItem = ({ isFocused, onPress, onLongPress, label }) => {
     };
     return (
         <TouchableOpacity
-
-
+            key={index}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={styles.container}
-        >
-            {/* <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-                {label}
-            </Text> */}
+            style={styles.container}>
             <Icons />
             <Text style={styles.text(isFocused)}>
                 {label}
@@ -41,6 +35,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        // borderTopLeftRadius: 15,
     },
     text: (isFocused) => ({
         color: isFocused ? '#e0e0e0' : '#6AB1D7',

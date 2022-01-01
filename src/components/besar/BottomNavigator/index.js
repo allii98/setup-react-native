@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native';
-import TabItem from '../Tabitem';
+import TabItem from '../TabItem';
 
 const BottomNavigator = ({ state, descriptors, navigation }) => {
     return (
@@ -37,7 +37,7 @@ const BottomNavigator = ({ state, descriptors, navigation }) => {
                 };
 
                 return (
-                    <TabItem isFocused={isFocused} options={options} onPress={onPress} onLongPress={onLongPress} label={label} />
+                    <TabItem key={index} isFocused={isFocused} options={options} onPress={onPress} onLongPress={onLongPress} label={label} />
                 );
             })}
         </View>
@@ -48,6 +48,7 @@ export default BottomNavigator;
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#22668A',
+
         paddingVertical: 10,
         flexDirection: 'row',
         elevation: 4,

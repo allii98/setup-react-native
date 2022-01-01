@@ -10,15 +10,15 @@ const Tab = createBottomTabNavigator();
 const mainApp = () => {
     return (
         <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Profile" component={Profile} />
+            <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
+            <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
         </Tab.Navigator>
     );
 }
 
 const Router = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="Splash">
             <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
             <Stack.Screen name="mainApp" component={mainApp} options={{ headerShown: false }} />
             <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
