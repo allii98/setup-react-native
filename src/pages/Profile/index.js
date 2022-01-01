@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, TouchableOpacity, StatusBar, Image } from 'react-native'
-import { dummyProfile } from '../../data'
+import { dummyProfile, dummyMenu } from '../../data'
 import { fonts, responsiveHeight, responsiveWidth } from '../../utils'
+import { RFValue } from "react-native-responsive-fontsize"
+import { ListMenu } from '../../components/'
 
 export default class Profile extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            profile: dummyProfile
+            profile: dummyProfile,
+            menus: dummyMenu
         }
     }
 
     render() {
-        const { profile } = this.state
+        const { profile, menus } = this.state
         return (
             <View style={styles.pages}>
                 <StatusBar backgroundColor="#22668A" />
@@ -22,11 +25,12 @@ export default class Profile extends Component {
                     <View style={styles.profile}>
 
                         <Text style={styles.nama}>{profile.nama}</Text>
-                        <Text style={styles.desc}>{profile.nik}</Text>
-                        <Text style={styles.desc}>{profile.alamat} {profile.kota}</Text>
+                        <Text style={styles.desc}>{profile.jabatan}</Text>
+                        {/* <Text style={styles.desc}>{profile.alamat}, {profile.kota}</Text> */}
                     </View>
-                </View>
 
+                    <ListMenu menus={menus} navigation={this.props.navigation} />
+                </View>
             </View>
 
         )
@@ -41,7 +45,7 @@ const styles = StyleSheet.create({
     container: {
         position: 'absolute',
         bottom: 0,
-        height: responsiveHeight(680),
+        height: responsiveHeight(652),
         width: '100%',
         backgroundColor: '#f5f5f5',
         borderTopLeftRadius: 40,
@@ -61,12 +65,12 @@ const styles = StyleSheet.create({
     nama: {
         fontFamily: fonts.primary.bold,
         fontWeight: 'bold',
-        fontSize: 24
+        fontSize: RFValue(24, 896)
     },
     desc: {
         fontFamily: fonts.primary.regular,
         fontWeight: 'normal',
-        fontSize: 18
+        fontSize: RFValue(18, 896)
     },
 
 

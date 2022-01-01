@@ -1,7 +1,7 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home, Splash, Profile } from '../pages';
+import { Home, Splash, Profile, EditProfile, ChangePassword, Login, Absen, Histori } from '../pages';
 import { BottomNavigator } from '../components';
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +22,11 @@ const Router = () => {
             <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
             <Stack.Screen name="mainApp" component={mainApp} options={{ headerShown: false }} />
             <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+            <Stack.Screen name="EditProfile" component={EditProfile} options={{ title: 'Edit Profile' }} />
+            <Stack.Screen name="ChangePassword" component={ChangePassword} options={{ title: 'Change Password' }} />
+            <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+            <Stack.Screen name="Absen" component={Absen} options={{ title: 'Absensi' }} />
+            <Stack.Screen name="Histori" component={Histori} options={{ title: 'Riwayat Absensi' }} />
         </Stack.Navigator>
     )
 }

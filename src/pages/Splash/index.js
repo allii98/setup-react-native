@@ -16,7 +16,7 @@ export default class Splash extends Component {
                 <StatusBar backgroundColor="white" />
                 <Image
                     source={require('../../assets/image/logo.png')}
-                    style={{ width: 100, height: 86, borderRadius: 4 }}
+                    style={{ width: 60, height: 60 }}
                 />
                 <Msal />
                 <View style={styles.work}>
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     work: {
         position: 'absolute',
         bottom: 0,
-        right: 2
+        right: 0
     },
     /* end pages */
 })

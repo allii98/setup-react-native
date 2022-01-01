@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, StatusBar, FlatList } from 'react-native'
+import { Text, StyleSheet, View, StatusBar, FlatList, TouchableOpacity } from 'react-native'
 import HeaderComponent from '../../components/besar/HeaderComponent'
-import { ButtonAction } from '../../components/kecil/'
+import { FlatGrid } from 'react-native-super-grid';
 import { fonts } from '../../utils'
+import { dummyKategori } from '../../data'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 export default class Home extends Component {
     constructor(props) {
@@ -12,20 +14,36 @@ export default class Home extends Component {
             histori: [
                 { id: 1, tgl: '03-01-2022', absen: 'masuk', jam: '08:30' },
                 { id: 2, tgl: '03-01-2022', absen: 'keluar', jam: '18:00' },
-            ]
+            ],
+            menus: dummyKategori
         }
     }
     render() {
+        const { histori } = this.state
         return (
             <View style={styles.pages}>
                 <StatusBar backgroundColor="#22668A" />
                 <HeaderComponent />
-                <ButtonAction />
+                {/* untuk button absen dan histori */}
+                <View style={styles.container}>
+                    <FlatGrid
+                        itemDimension={80}
+                        data={this.state.menus}
+                        renderItem={({ item }) => (
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate(item.halaman)} style={styles.boxs}>
+                                <Icon name={item.icon} size={45} color="#6AB1D7" />
+                                <Text style={styles.text}>{item.nama}</Text>
+                            </TouchableOpacity>
+                        )}
+                    />
+                </View>
+                {/* end untuk button absen dan histori */}
+
                 <View style={styles.riwayat}>
                     <Text style={styles.label}>Riwayat Absensi</Text>
                 </View>
                 <FlatList
-                    data={this.state.histori}
+                    data={histori}
                     renderItem={({ item, index }) =>
                         <View style={styles.box}>
                             <Text style={{ fontWeight: 'bold' }}>{item.tgl}</Text>
@@ -73,7 +91,7 @@ const styles = StyleSheet.create({
 
     riwayat: {
         marginHorizontal: 10,
-        marginTop: 10,
+        marginTop: 5,
         marginBottom: 5
     },
     label: {
@@ -86,7 +104,27 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         flexDirection: 'row',
     },
-    btn_home: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-    btn_profile: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+    container: {
+        marginTop: -30
+    },
+    text: {
+        fontFamily: fonts.primary.bold,
+        fontSize: 14,
+    },
+    boxs: {
+        backgroundColor: '#fafafa',
+        height: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 6,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    }
 })
 
