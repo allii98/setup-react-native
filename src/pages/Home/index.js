@@ -15,11 +15,15 @@ export default class Home extends Component {
                 { id: 1, tgl: '03-01-2022', absen: 'masuk', jam: '08:30' },
                 { id: 2, tgl: '03-01-2022', absen: 'keluar', jam: '18:00' },
             ],
-            menus: dummyKategori
+            menus: dummyKategori,
+            dataUser: {
+                nama: 'ALI',
+                email: 'ali@msalgroup.com'
+            }
         }
     }
     render() {
-        const { histori } = this.state
+        const { histori, dataUser } = this.state
         return (
             <View style={styles.pages}>
                 <StatusBar backgroundColor="#22668A" />

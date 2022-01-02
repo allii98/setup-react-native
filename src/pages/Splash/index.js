@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     work: {
         position: 'absolute',
         bottom: 0,
-        right: 0
+        right: -20,
     },
     /* end pages */
 })
